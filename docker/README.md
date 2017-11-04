@@ -26,10 +26,27 @@ Danach muss unter `Settings` > `Languages & Frameworks` > `PHP` der PHP Interpre
 
 
 ## Webserver einrichten
+Ein neuen Webserver anlegen, der Name wird nachher noch wichtig!
+- Den `Host` angeben wo der Docker-Webserver läuft.
+- Den `Port` auf dem der Webserver läuft.
+Beides kann aus den Angaben der Docker-Container entnommen werden.
 
+Es muss nun auch noch der lokale Path mit dem Pfad auf der Docker-Maschine gemappt werden. Den Pfad auf der Docker-Maschine erhält man auch aus der Konfiguration des Containers.
+
+![Server-Settings][server]
+
+
+
+## Debugging starten
+Damit PHPStorm die eingehenden Xdebug-Session zu einem `Server` zuordnen kann muss in der `docker-compose.yml` eine entsprechende Umgebungsvariable gesetzt werden.
+```php
+environment:
+        - PHP_IDE_CONFIG=serverName={NAME DER IN PHPSTORM ANGEGEBEN WURDE}
+``` 
 
 
 [win-docker]: images/Windows-Docker.png "Window Docker"
 [docker-image]: images/PHP-Docker-Image.png "PHP Docker Image"
 [remote-cli]: images/Configure-Remote-PHP-Interpreter.png "Remote Docker CLI"
 [cli]: images/CLI-Interpreters.png "CLI"
+[server]: images/Server-Settings.png "Server"
