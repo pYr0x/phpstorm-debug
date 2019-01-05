@@ -25,15 +25,19 @@ Wenn der Haken `Visible only for this Project` nicht gesetzt ist, können auch an
 
 ## Lokalen Webserver einrichten
 Unter `Settings` > `Languages & Frameworks` > `PHP` > `Servers` muss ein Webserver eingerichtet werden.
-Eine Konfugiration könnte so aussehen:
 
-![localhost][webserver]
+* Wird für das Projekt ein eigener VHost `C:\wamp64\bin\apache\apache2.4.23\conf\extra\httpd-vhosts.conf` und eine Umleitung in `C:\Windows\System32\drivers\etc\hosts` angelegt:
+![V-Host][vhost]
 
-Das `path mapping` folgt dann in [php](php/README.md) oder in [php-rewrite](php-rewrite/README.md)
-- `Max. simultaneous connections`: Wenn mehrere Projekte gleichzeitig offen sind, dann kann hier die Anzahl erhöhrt werden und jedes Projekt kann debuggt werden ohne das es das andere blockiert.
-- `Xdebug`: Der Port 9000 ist Standard. Kann aber mit `xdebug.remote_port` in der `php.ini` geändert werden. Oder aber auch über die `XDEBUG_CONFIG` > `XDEBUG_CONFIG=remote_host=192.168.99.1 remote_port=9001 remote_connect_back=0 idekey=PHPSTORM`
 
+* Wird kein VHost angelegt und das Projekt direkt unter dem Pfad betrieben, dann nur ein `localhost` angeben
+![webserver][localhost]
+Beim debuggen wird dann gefragt welches Projekt bei einer XDebug Anfrage debuggt werde soll
+![incomming][incomming]
+Soll dieses Fenster nicht mehr erscheinen, so muss der "Listener" in dem jeweiligen Projekten gestoppt werden 
 
 
 [cli-i]: images/CLI-Interpreters.png "local cli interpreter"
-[webserver]: images/Servers.png.png "local webserver"
+[vhost]: images/Servers-vhost.png
+[localhost]: images/Servers.png
+[incomming]: images/incoming-connection-from-xdebug.png
